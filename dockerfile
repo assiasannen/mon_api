@@ -1,7 +1,7 @@
-# Utiliser une image Python comme base
+
 FROM python:3.9-slim
 
-# Définir le répertoire de travail
+#  le répertoire de travail
 WORKDIR /app
 
 # Copier les fichiers nécessaires dans le conteneur

@@ -3,14 +3,13 @@ pipeline {
 
     environment {
         DOCKER_IMAGE_NAME = 'mon-api'
-        DOCKER_REGISTRY = 'docker.io' // Si vous utilisez Docker Hub
-        DOCKER_REPO = 'assiasannen2105/mon-api' // Votre nom d'utilisateur Docker Hub et le nom de l'image
-    }
+        DOCKER_REGISTRY = 'docker.io' 
+        DOCKER_REPO = 'assiasannen2105/mon-api' 
 
     stages {
         stage('Cloner le dépôt') {
             steps {
-                // Clone le dépôt Git où se trouve votre projet
+                // Clone le dépôt Git 
                 git 'https://github.com/votre-utilisateur/votre-repository.git'
             }
         }
@@ -27,7 +26,7 @@ pipeline {
         stage('Pousser l\'image vers Docker Hub') {
             steps {
                 script {
-                    // Se connecter à Docker Hub (utilisez vos identifiants Docker Hub)
+                    // Se connecter à Docker Hub 
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
                     }
